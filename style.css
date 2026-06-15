@@ -211,7 +211,7 @@ body {
 }
 
 /* ============================================
-   SITE BADGE — Fixed Right-Center (Awwwards Style)
+   SITE BADGE — Fixed Right-Center
    ============================================ */
 .site-badge {
     position: fixed;
@@ -219,58 +219,28 @@ body {
     top: 50%;
     transform: translateY(-50%);
     z-index: 997;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    transition: transform var(--transition-fast);
+    background: var(--violet-500);
+    padding: 16px 10px;
+    border-radius: 8px 0 0 8px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    cursor: default;
 }
 
 .site-badge:hover {
     transform: translateY(-50%) translateX(-4px);
+    box-shadow: -4px 0 20px var(--violet-glow-strong);
 }
 
-.badge-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: var(--violet-500);
-    color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: 900;
-    font-family: var(--font-sans);
-    letter-spacing: -1px;
-    border-radius: 6px 0 0 0;
-}
-
-.badge-logo-dot {
-    color: #ffffff;
-    font-weight: 900;
-}
-
-.badge-ribbon-text {
+.badge-text {
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    background: var(--violet-600);
     color: #ffffff;
     font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 2.5px;
+    font-weight: 800;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    padding: 14px 12px;
-    border-radius: 0 0 0 6px;
     line-height: 1;
-}
-
-/* Light mode badge adjustments */
-[data-theme="light"] .badge-logo {
-    background: var(--violet-500);
-}
-
-[data-theme="light"] .badge-ribbon-text {
-    background: var(--violet-600);
+    font-family: var(--font-sans);
 }
 
 body.menu-open {
@@ -875,22 +845,31 @@ a {
 }
 
 /* ============================================
-   STATS BANNER — Separate Section
+   ABOUT STATS — Inside About Header
    ============================================ */
-.stats-banner {
-    padding: 50px 5%;
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
-}
-
-.stats-banner-container {
-    max-width: 900px;
-    margin: 0 auto;
+.about-stats {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 50px;
+    gap: 48px;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.about-stat-item {
+    text-align: center;
+    position: relative;
+}
+
+.about-stat-item:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 50px;
+    background: var(--border-subtle);
 }
 
 .stat-item {
@@ -1818,15 +1797,12 @@ footer {
         height: 40px;
     }
 
-    .badge-logo {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
+    .site-badge {
+        padding: 12px 8px;
     }
 
-    .badge-ribbon-text {
-        font-size: 0.55rem;
-        padding: 10px 9px;
+    .badge-text {
+        font-size: 0.5rem;
         letter-spacing: 2px;
     }
 
@@ -1839,9 +1815,13 @@ footer {
         letter-spacing: -2px;
     }
 
-    .stats-banner-container {
+    .about-stats {
         gap: 24px;
         flex-wrap: wrap;
+    }
+
+    .about-stat-item:not(:first-child)::before {
+        display: none;
     }
 
     .stat-number {
@@ -1979,7 +1959,7 @@ footer {
         display: none;
     }
 
-    .stats-banner-container {
+    .about-stats {
         justify-content: space-around;
     }
 
